@@ -14,7 +14,7 @@ peach = ['Peach___Bacterial_spot', 'Peach___healthy']
 pepper = ['Pepper,_bell___Bacterial_spot', 'Pepper,_bell___healthy']
 potato = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
 soyabean = ['Soybean___healthy', 'Squash___Powdery_mildew']
-
+strawberry = ['Strawberry___Leaf_scorch', 'Strawberry___healthy']
 
 
 
@@ -128,7 +128,11 @@ def predict():
             MODEL_PATH = 'potato.tflite' 
         elif name_of_crop == 'soyabean': 
             class_labels = soyabean 
-            MODEL_PATH = 'soyabean.tflite' 
+            MODEL_PATH = 'soyabean.tflite'  
+
+        elif name_of_crop == 'strawberry': 
+            class_labels = strawberry  
+            MODEL_PATH = 'strawberry.tflite'
         else:
             return jsonify({"error": "Invalid crop name provided."}), 400
 
