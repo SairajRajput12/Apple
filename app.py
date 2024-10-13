@@ -12,6 +12,8 @@ cherry = ['Cherry_(including_sour)___Powdery_mildew','Cherry_(including_sour)___
 grape = ['Grape___Black_rot', 'Grape___Esca_(Black_Measles)', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Grape___healthy']
 peach = ['Peach___Bacterial_spot', 'Peach___healthy']
 pepper = ['Pepper,_bell___Bacterial_spot', 'Pepper,_bell___healthy']
+potato = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
+
 
 
 
@@ -119,7 +121,9 @@ def predict():
         elif name_of_crop == 'pepper': 
             class_labels = pepper  
             MODEL_PATH = 'pepper.tflite'
-            
+        elif name_of_crop == 'potato': 
+            class_labels = potato 
+            MODEL_PATH = 'potato.tflite'
         else:
             return jsonify({"error": "Invalid crop name provided."}), 400
 
