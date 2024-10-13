@@ -5,16 +5,10 @@ from flask import Flask, request, jsonify
 from PIL import Image
 import tflite_runtime.interpreter as tflite
 
-# Load the TFLite model
-MODEL_PATH = 'apple.tflite'
-interpreter = tflite.Interpreter(model_path=MODEL_PATH)
-interpreter.allocate_tensors()
-
-# Get input and output tensors
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
+# Class labels for Apple and Corn
 apple = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy'] 
 corn = ['Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy']
+
 app = Flask(__name__)
 
 def load_and_preprocess_image(image_base64, target_size=(224, 224)):
@@ -25,9 +19,9 @@ def load_and_preprocess_image(image_base64, target_size=(224, 224)):
         img = Image.open(io.BytesIO(image_data))
         print('Image decoded and opened.')
 
-        # Resize the image to (64, 64)
+        # Resize the image to the model input size (224x224)
         img = img.resize(target_size)
-        print('Image resized to 64x64.')
+        print('Image resized to 224x224.')
 
         # Convert image to numpy array and normalize
         img_array = np.array(img)
@@ -37,7 +31,7 @@ def load_and_preprocess_image(image_base64, target_size=(224, 224)):
         img_array = img_array.astype('float32') / 255.0
         print('Image normalized.')
 
-        # Add a batch dimension (1, 64, 64, 3)
+        # Add a batch dimension (1, 224, 224, 3)
         img_array = np.expand_dims(img_array, axis=0)
         print('Batch dimension added.')
 
@@ -47,14 +41,22 @@ def load_and_preprocess_image(image_base64, target_size=(224, 224)):
         print(f"Error processing image: {str(e)}")
         raise
 
-def predict_image_class(image_base64, class_indices):
+def predict_image_class(image_base64, class_indices, model_path):
     print('Start prediction...')
 
     # Load and preprocess the image
     preprocessed_img = load_and_preprocess_image(image_base64)
     print('Image preprocessed.')
 
-    # Set the input tensor
+    # Load the TFLite model
+    interpreter = tflite.Interpreter(model_path=model_path)
+    interpreter.allocate_tensors()
+
+    # Get input and output tensors
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+
+    # Set the input tensor with preprocessed image
     interpreter.set_tensor(input_details[0]['index'], preprocessed_img)
 
     # Invoke the interpreter to run inference
@@ -77,28 +79,29 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Extract the base64 image data from the request
+        # Extract the base64 image data and crop name from the request
         data = request.json
         img_base64 = data.get("img_base64")
         name_of_crop = data.get("name")
         print('Received base64 image data.')
 
-        if not img_base64:
-            return jsonify({"error": "No image data provided"}), 400
+        if not img_base64 or not name_of_crop:
+            return jsonify({"error": "No image data or crop name provided"}), 400
     
         print('Processing base64 image data.')
 
+        # Define class labels and model path based on the crop
         if name_of_crop == "corn": 
-            # Define class labels
-            class_labels = corn 
+            class_labels = corn
+            MODEL_PATH = 'corn.tflite'
         elif name_of_crop == "apple": 
-            class_labels = apple 
-
-        
-
+            class_labels = apple
+            MODEL_PATH = 'apple.tflite'
+        else:
+            return jsonify({"error": "Invalid crop name provided."}), 400
 
         # Perform prediction
-        prediction = predict_image_class(img_base64, class_labels)
+        prediction = predict_image_class(img_base64, class_labels, MODEL_PATH)
         print(f'Prediction: {prediction}')
 
         return jsonify({"prediction": prediction})
