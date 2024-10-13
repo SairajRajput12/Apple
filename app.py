@@ -10,6 +10,8 @@ apple = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 
 corn = ['Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy']
 cherry = ['Cherry_(including_sour)___Powdery_mildew','Cherry_(including_sour)___healthy']
 grape = ['Grape___Black_rot', 'Grape___Esca_(Black_Measles)', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Grape___healthy']
+peach = ['Peach___Bacterial_spot', 'Peach___healthy']
+
 
 
 
@@ -107,7 +109,11 @@ def predict():
 
         elif name_of_crop == "grape": 
             class_labels = grape 
-            MODEL_PATH = 'grape.tflite' 
+            MODEL_PATH = 'grape.tflite'  
+
+        elif name_of_crop == 'peach': 
+            class_labels = peach 
+            MODEL_PATH = 'peach.tflite'
         else:
             return jsonify({"error": "Invalid crop name provided."}), 400
 
