@@ -13,7 +13,8 @@ interpreter.allocate_tensors()
 # Get input and output tensors
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
-
+apple = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy'] 
+corn = ['Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy']
 app = Flask(__name__)
 
 def load_and_preprocess_image(image_base64, target_size=(224, 224)):
@@ -79,15 +80,21 @@ def predict():
         # Extract the base64 image data from the request
         data = request.json
         img_base64 = data.get("img_base64")
+        name_of_crop = data.get("name")
         print('Received base64 image data.')
 
         if not img_base64:
             return jsonify({"error": "No image data provided"}), 400
-
+    
         print('Processing base64 image data.')
 
-        # Define class labels
-        class_labels = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy']
+        if name_of_crop == "corn": 
+            # Define class labels
+            class_labels = corn 
+        elif name_of_crop == "apple": 
+            class_labels = apple 
+
+        
 
 
         # Perform prediction
