@@ -84,6 +84,7 @@ def predict_image_class(image_base64, class_indices, model_path):
 
     # Get the predicted class
     predicted_class_index = np.argmax(predictions, axis=1)[0]
+    print(predictions)
     predicted_class = class_indices[predicted_class_index]
 
     return predicted_class
