@@ -1,0 +1,9 @@
+pydantic
+uvicorn
+Pillow
+numpy
+requests
+gunicorn 
+flask_cors
+Flask
+tflite-runtime
