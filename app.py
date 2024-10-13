@@ -8,6 +8,8 @@ import tflite_runtime.interpreter as tflite
 # Class labels for Apple and Corn
 apple = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy'] 
 corn = ['Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy']
+cherry = ['Cherry_(including_sour)___Powdery_mildew','Cherry_(including_sour)___healthy']
+
 
 app = Flask(__name__)
 
@@ -96,7 +98,10 @@ def predict():
             MODEL_PATH = 'corn.tflite'
         elif name_of_crop == "apple": 
             class_labels = apple
-            MODEL_PATH = 'apple.tflite'
+            MODEL_PATH = 'apple.tflite' 
+        elif name_of_crop == "cherry": 
+            class_labels = cherry 
+            MODEL_PATH = 'cherry.tflite'
         else:
             return jsonify({"error": "Invalid crop name provided."}), 400
 
