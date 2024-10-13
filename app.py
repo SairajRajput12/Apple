@@ -6,16 +6,16 @@ from PIL import Image
 import tflite_runtime.interpreter as tflite
 
 # Class labels for Apple and Corn
-apple = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy'] 
-corn = ['Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy']
-cherry = ['Cherry_(including_sour)___Powdery_mildew','Cherry_(including_sour)___healthy']
-grape = ['Grape___Black_rot', 'Grape___Esca_(Black_Measles)', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Grape___healthy']
-peach = ['Peach___Bacterial_spot', 'Peach___healthy']
-pepper = ['Pepper,_bell___Bacterial_spot', 'Pepper,_bell___healthy']
-potato = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
-soyabean = ['Soybean___healthy', 'Squash___Powdery_mildew']
-strawberry = ['Strawberry___Leaf_scorch', 'Strawberry___healthy']
-tomato = ['Tomato___Bacterial_spot', 'Tomato___Early_blight', 'Tomato___Target_Spot', 'Tomato___healthy']
+apple = ['Apple Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'Apple healthy'] 
+corn = ['Corn_(maize) Cercospora leaf spot Gray leaf spot', 'Corn (maize) Common rust ', 'Corn (maize) Northern Leaf Blight', 'Corn (maize) healthy']
+cherry = ['Cherry (including sour) Powdery mildew','Cherry (including sour) healthy']
+grape = ['Grape Black rot', 'Grape Esca (Black_Measles)', 'Grape leaf blight (Isariopsis Leaf Spot)', 'Grape healthy']
+peach = ['Peach Bacterial spot', 'Peach healthy']
+pepper = ['Pepper bell Bacterial spot', 'Pepper bell healthy']
+potato = ['Potato Early blight', 'Potato Late blight', 'Potato healthy']
+soyabean = ['Soybean healthy', 'Squash Powdery mildew']
+strawberry = ['Strawberry Leaf scorch', 'Strawberry healthy']
+tomato = ['Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Target Spot', 'Tomato healthy']
 
 
 
