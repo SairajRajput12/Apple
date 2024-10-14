@@ -4,6 +4,7 @@ import numpy as np
 from flask import Flask, request, jsonify
 from PIL import Image
 import tflite_runtime.interpreter as tflite
+from flask_cors import CORS
 
 # Class labels for Apple and Corn
 apple = ['Apple Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'Apple healthy'] 
@@ -21,11 +22,9 @@ tomato = ['Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Target Spot', 
 
 
 
-
-
-
-
 app = Flask(__name__)
+CORS(app)  
+
 
 def load_and_preprocess_image(image_base64, target_size=(224, 224)):
     try:
