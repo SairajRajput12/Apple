@@ -1,5 +1,8 @@
 # Plant Disease Detection API
 
+https://media.tenor.com/67EGa-wMf5MAAAAM/sherlock-benedict-cumberbatch.gif
+
+
 This is a Flask-based API for detecting diseases in various crops using TensorFlow Lite (TFLite) models. The system takes a base64-encoded image of a plant leaf and the name of the crop as input, and returns the predicted class (disease) of the plant based on the image.you can check our api in this link: https://plant-disease-prediction-echd.onrender.com
 ## Features
 - Supports detection for multiple crops, including apple, corn, cherry, grape, peach, pepper, potato, soyabean, strawberry, and tomato.
