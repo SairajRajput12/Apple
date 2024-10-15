@@ -125,9 +125,6 @@ The API currently supports the following crops and disease classes:
 - If an invalid crop name is provided, the API returns a 400 status code with an error message.
 - If any internal error occurs, the API returns a 500 status code with the error details.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 This project makes use of TensorFlow Lite for efficient image classification on edge devices.
 
