@@ -31,7 +31,7 @@ This will display the GIF on the page when rendered in environments that support
 
 2. Install the required packages:
    ```bash
-   pip install flask pillow numpy flask-cors tflite-runtime
+   pip install -r requirements.txt
    ```
 
 3. Ensure you have the TFLite models for each crop in the appropriate format. Place the models (`apple.tflite`, `corn.tflite`, etc.) in the root directory or modify the paths accordingly.
