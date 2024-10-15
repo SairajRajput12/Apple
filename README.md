@@ -9,7 +9,7 @@ This is a Flask-based API for detecting diseases in various crops using TensorFl
 - Returns the predicted disease class for the given crop.
 
 ## Requirements
-- Python 3.6+
+- Python 3.10.11
 - Flask
 - Flask-CORS
 - Pillow
