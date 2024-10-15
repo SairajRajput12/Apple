@@ -1,9 +1,12 @@
+
 # 🌱 Plant Disease Detection API 🌿
 
-[](https://gifdb.com/images/high/detective-sherlock-holmes-observing-chi48er7ugdn2kdf.webp)
+<img src="https://media.tenor.com/67EGa-wMf5MAAAAM/sherlock-benedict-cumberbatch.gif" alt="Sherlock Holmes Observing" width="400"/>
 
 This is a Flask-based API for detecting diseases in various crops using TensorFlow Lite (TFLite) models. The system takes a base64-encoded image of a plant leaf and the name of the crop as input, and returns the predicted class (disease) of the plant based on the image. Check out our API here: [Plant Disease Prediction API](https://plant-disease-prediction-echd.onrender.com)
 
+
+This will display the GIF on the page when rendered in environments that support HTML, such as GitHub README files or other markdown editors with HTML support. You can adjust the width to suit your layout needs.
 ## 🌟 Features
 - 🧑‍🌾 Supports detection for multiple crops, including apple, corn, cherry, grape, peach, pepper, potato, soybean, strawberry, and tomato.
 - 📷 Takes input as base64-encoded image and crop name.
