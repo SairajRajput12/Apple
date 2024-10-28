@@ -23,8 +23,8 @@ tomato = ['Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Target Spot', 
 
 
 app = Flask(__name__)
-CORS(app)  
-# CORS(app, resources={r"/": {"origins": ""}})
+# CORS(app)  
+CORS(app, resources={r"/": {"origins": ""}})
 
 def load_and_preprocess_image(image_base64, target_size=(224, 224)):
     try:
