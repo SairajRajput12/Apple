@@ -3,7 +3,7 @@
 
 <img src="https://media.tenor.com/67EGa-wMf5MAAAAM/sherlock-benedict-cumberbatch.gif" alt="Sherlock Holmes Observing" width="400"/>
 
-This is a Flask-based API for detecting diseases in various crops using TensorFlow Lite (TFLite) models. The system takes a base64-encoded image of a plant leaf and the name of the crop as input, and returns the predicted class (disease) of the plant based on the image. Check out our API here: [Plant Disease Prediction API](https://plant-disease-prediction-kdmc.onrender.com/predict)
+This is a Flask-based API for detecting diseases in various crops using TensorFlow Lite (TFLite) models. The system takes a base64-encoded image of a plant leaf and the name of the crop as input, and returns the predicted class (disease) of the plant based on the image. Check out our API here: [Plant Disease Prediction API](https://plant-disease-prediction-kdmc.onrender.com)
 
 
 This will display the GIF on the page when rendered in environments that support HTML, such as GitHub README files or other markdown editors with HTML support. You can adjust the width to suit your layout needs.
